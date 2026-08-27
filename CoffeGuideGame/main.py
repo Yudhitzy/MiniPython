@@ -1,4 +1,4 @@
-import random,recipe,reveals
+import random,recipe,reveals,cooking
 from unittest import case
 import os
 import time
@@ -50,33 +50,12 @@ def run_game():
             print ("Bottom")
         
         opsi = input("Put Ingridients : ")
-        match opsi:
-            case "1" :
-                ur_cup.append("Espresso")
-            case "2" :
-                ur_cup.append("Water")
-            case "3" :
-                ur_cup.append("Chocolate")
-            case "4" :
-                ur_cup.append("Milk")
-            case "5" :
-                ur_cup.append("Milk Foam")
-            case "6" :
-                ur_cup.append("Liquor")
-            case "7" :
-                ur_cup.append("Ico")
-            case "8" :
-                ur_cup.append("Syrup")
-            case "9" :
-                ur_cup.append("Whipped Cream")
-            case "10" :
-                ur_cup.append("Whiskey")
-            case "11" :
-                ur_cup.append("Caramel")
-            case "12" :
-                ur_cup.append("Ice Cream")
-            case "X" :
-                Give = True
+        if opsi.upper() == "X":
+            Give = True
+        else:
+            ingredient = cooking.cooking(opsi)
+            if ingredient is not None:
+                ur_cup.append(ingredient)
 
         if Give:
             if need_cup is None or len(ur_cup) != len(need_cup):
